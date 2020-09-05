@@ -19,8 +19,8 @@ public class Guest {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="meeting_id")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name="meeting_id", nullable = false)
     @JsonIgnore
     private Meeting meeting;
 
