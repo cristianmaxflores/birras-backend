@@ -6,11 +6,11 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "meetings")
@@ -23,10 +23,12 @@ public class Meeting {
     private String time;
     private Date creationDate;
 
-    @OneToMany(cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY,
-            mappedBy = "meeting")
-    private Set<Guest> guests = new HashSet<>();
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    @JoinColumn(name = "university_id")
+    private List<Guest> guests;
 
     public Meeting(){
 
@@ -72,11 +74,11 @@ public class Meeting {
         this.creationDate = creationDate;
     }
 
-    public Set<Guest> getGuests() {
+    public List<Guest> getGuests() {
         return guests;
     }
 
-    public void setGuests(Set<Guest> guests) {
+    public void setGuests(List<Guest> guests) {
         this.guests = guests;
     }
 }

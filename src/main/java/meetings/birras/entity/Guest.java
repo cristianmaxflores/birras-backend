@@ -19,10 +19,10 @@ public class Guest {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name="meeting_id", nullable = false)
+/*    @ManyToOne()
+    @JoinColumn(name="meeting_id")
     @JsonIgnore
-    private Meeting meeting;
+    private Meeting meeting;*/
 
     private String firstName;
     private String lastName;
@@ -37,13 +37,13 @@ public class Guest {
         this.id = id;
     }
 
-    public Meeting getMeeting() {
+/*    public Meeting getMeeting() {
         return meeting;
     }
 
     public void setMeeting(Meeting meeting) {
         this.meeting = meeting;
-    }
+    }*/
 
     public String getFirstName() {
         return firstName;
