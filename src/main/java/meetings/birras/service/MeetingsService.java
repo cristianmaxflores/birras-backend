@@ -19,7 +19,6 @@ public class MeetingsService {
     }
     public Meeting saveMeeting(Meeting meeting){
         meeting.setCreationDate(new Date());
-        //meeting.getGuests().forEach(guest -> guest.setMeeting(meeting));
         return repository.save(meeting);
     }
 
